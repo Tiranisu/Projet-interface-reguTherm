@@ -1,2 +1,2 @@
 # Projet-interface-reguTherm
-An 3rd year project
+A 3rd year project
