@@ -9,12 +9,7 @@ OUTPUT = execute
 O_FILES = $(wildcard *.o)
 #$(TYPE) $(C_FILES) -o $(wildcard $(C_FILES).o) -Wall
 all:		
-	
-	$(TYPE) -c Src/consigne.c -Wall
-	$(TYPE) -c Src/regulation.c -Wall
-	$(TYPE) -c Src/visualisationC.c -Wall
-	$(TYPE) -c Src/visualisationT.c -Wall
-	$(TYPE) $(O_FILES) -o execute -Wall
+	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o execute -Wall
 
 simu:
 	$(TYPE) -c Inc/define.h Inc/simulateur.h Src/simulateur.c -Wall
@@ -23,10 +18,13 @@ simu:
 
 
 autotests:
-	$(TYPE) Src/consigne.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Inc/autotests.h Src/autotests.c -Wall
-	$(TYPE) autotests.o -o execute -Wall
+	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o execute -Wall
+	./execute.exe
 
 
 clean:
 	rm $(O_FILES)
+
+test:
+
 
