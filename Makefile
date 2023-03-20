@@ -21,6 +21,9 @@ autotests:
 	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o execute -Wall
 	./execute.exe
 
+autotests-linux:
+	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o execute -Wall
+	./execute
 
 clean:
 	rm $(O_FILES)
