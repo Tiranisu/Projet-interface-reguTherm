@@ -3,6 +3,7 @@
         "consigne.h": "c",
         "regulation.h": "c",
         "visualisationc.h": "c",
-        "visualisationt.h": "c"
+        "visualisationt.h": "c",
+        "math.h": "c"
     }
 }
