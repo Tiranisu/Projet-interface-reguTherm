@@ -1,9 +1,9 @@
     #include <stdio.h>
 	 #include <stdlib.h>
-    #include "regulation.h"
+    #include "../Inc/regulation.h"
 	 
 	float regulationTest(int regul,float consigne,float* tabT, int nT){
-		float cmd;
+		float cmd=0; // <---
 		
 		return cmd;
 	}
