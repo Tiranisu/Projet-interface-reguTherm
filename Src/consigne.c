@@ -10,14 +10,14 @@ float consigne(float thermostatPrec_f){
    
       if(!consigne){
          perror("Un problème est survenu pendant la création/ouverture du fichier.");
-         return;
+         return thermostatPrec_f;
       }
 
       FILE* verrouConsigne = fopen(".verrouConsigne", "w");
 
       if(!verrouConsigne){
          perror("Un problème est survenu pendant la création/ouverture du fichier.");
-         return;
+         return thermostatPrec_f;
       }
 
       fscanf(consigne, "%f", &thermostat_f);
