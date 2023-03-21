@@ -27,11 +27,13 @@ float regulationTest(int regul,float consigne,float* tabT, int nT){
 		}
 	}
 	if(regul == 2){
+		int dt = nT*10;
 		float erreur = tabT[nT-1];
 		float P = KP * (consigne - erreur);
-		float I = KI * (erreur * nT * 10);
-		float D = KD;
-
+		float I = KI * erreur * dt;
+		float D = KD * (erreur - tabT[nT - 1]) / dt;
+		float PID = P + I + D; 
+		//printf("%f", P);
 	}
 
 	return cmd;
