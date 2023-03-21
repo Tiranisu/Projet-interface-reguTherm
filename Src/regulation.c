@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../Inc/regulation.h"
-#define KP 1
-#define KI 1
-#define KD 1
+#define KP 1.1
+#define KI 0.2
+#define KD 0.15
 
 
 /**
@@ -17,7 +17,6 @@
  */
 float regulationTest(int regul,float consigne,float* tabT, int nT){
 	float cmd=0; // <---
-
 	if(regul == 1){
 		if(tabT[nT-1] > consigne){
 			return 0;
@@ -27,13 +26,24 @@ float regulationTest(int regul,float consigne,float* tabT, int nT){
 		}
 	}
 	if(regul == 2){
-		int dt = nT*10;
-		float erreur = tabT[nT-1];
-		float P = KP * (consigne - erreur);
-		float I = KI * erreur * dt;
-		float D = KD * (erreur - tabT[nT - 1]) / dt;
-		float PID = P + I + D; 
-		//printf("%f", P);
+		float erreur = consigne - tabT[nT-1];
+		float dt = nT;
+		float sum_error=tabT[nT-1] + tabT[nT-2];
+
+		float P = KP * erreur * dt;	
+
+		float I = KI * sum_error * dt;
+
+		float D = KD * (erreur - (consigne - tabT[nT-2])) / dt;
+
+		cmd = P + I + D;
+		printf("%f\n", cmd);
+		if(cmd > 100){
+			cmd = 100;
+		}
+		if(cmd <= 0){
+			cmd = 0;
+		}
 	}
 
 	return cmd;

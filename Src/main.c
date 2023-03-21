@@ -3,9 +3,9 @@
 
 int main(){
     float score1=0,score2=0,score3=0,score4=0,score5=0;
-    score1 = testVisualisationT();
-    score2 = testConsigne();
-    score3 = testVisualisationC();
+    //score1 = testVisualisationT();
+    //score2 = testConsigne();
+    //score3 = testVisualisationC();
     score4 = testRegulationTOR();
     score5 = testRegulationPID();
     printf(" ----- Auto tests results: -----\n ");

@@ -29,5 +29,3 @@ clean:
 	rm $(O_FILES)
 
 test:
-
-
