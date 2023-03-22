@@ -1,6 +1,6 @@
 #include "../Inc/releve.h"
 
-void releve(FT_HANDLE *carte){
+void releve(FT_HANDLE *carte, temp_t *temp){
     FT_STATUS status;
     
     char result[6];
@@ -58,6 +58,8 @@ void releve(FT_HANDLE *carte){
             float temp_int_absolu = -39.64 + 0.04 * (SOT_int);
 
             printf("temp-ext : %f*C || temp-int : %f*C\n", temp_ext_absolu, temp_int_absolu);
+            temp->interieure = temp_int_absolu;
+            temp->exterieure = temp_ext_absolu;
         }else{
             perror("Erreur de transmission : paquet manquant !");
         }

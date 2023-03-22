@@ -3,6 +3,6 @@
 
 #include "usb.h"
 
-void releve(FT_HANDLE *carte);
+void releve(FT_HANDLE *carte, temp_t *temp);
 
 #endif

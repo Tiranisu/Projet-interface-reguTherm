@@ -16,7 +16,7 @@ simu:
 	./execute.exe
 
 usb:
-	$(TYPE) -c Src/releve.c Src/usb.c Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -Wall 
+	$(TYPE) -c Src/releve.c Src/commande.c Src/usb.c Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -Wall 
 	$(TYPE) $(O_FILES) ftd2xx.lib -o execute -Wall
 	./execute.exe
 
