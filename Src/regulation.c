@@ -19,8 +19,7 @@
 float TOR(float consigne,float* tabT, int nT){
 	if(tabT[nT-1] > consigne){
 		return 0;
-	}
-	if(tabT[nT-1] <= consigne){
+	}else{
 		return 50;
 	}
 }

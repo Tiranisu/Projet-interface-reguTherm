@@ -20,6 +20,7 @@ simu:
 autotests:
 	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o execute -Wall
 	./execute.exe
+	rm execute.exe
 
 autotests-linux:
 	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o execute -Wall

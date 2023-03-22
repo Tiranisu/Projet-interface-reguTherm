@@ -33,6 +33,7 @@ void visualisationT(temp_t myTemp)
         fprintf(data, "%s\n", temoinChauffe);
         fprintf(data,"%.2f\n%.2f",myTemp.interieure,myTemp.exterieure);
         fclose(data);
+        fclose(verrouData);
 
         remove(".verrouData");
     }

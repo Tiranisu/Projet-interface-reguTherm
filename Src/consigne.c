@@ -22,6 +22,7 @@ float consigne(float thermostatPrec_f){
 
       fscanf(consigne, "%f", &thermostat_f);
       fclose(consigne);
+      fclose(verrouConsigne);
 
       remove(".verrouConsigne");
    }else{
