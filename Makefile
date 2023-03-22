@@ -2,12 +2,10 @@
 TYPE = gcc
 
 # The name of the compiled file
-OUTPUT = execute
+OUTPUT = execute.exe
 
-#Look for all the files in the folder Src which and with .c
-#C_FILES = $(wildcard Src/*.c)
 O_FILES = $(wildcard *.o)
-#$(TYPE) $(C_FILES) -o $(wildcard $(C_FILES).o) -Wall
+
 all:		
 	$(info Je suis papa)
 
@@ -20,13 +18,13 @@ simu:
 
 
 autotests:
-	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o execute -Wall
+	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o $(OUTPUT) -Wall
 	./execute.exe
 	make clean
 
 
 autotests-linux:
-	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o execute -Wall
+	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main.c -o $(OUTPUT) -Wall
 	./execute
 	make clean
 
