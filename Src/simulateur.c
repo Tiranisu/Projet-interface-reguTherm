@@ -29,7 +29,7 @@ void msleep(int ms)
    struct simParam_s* simConstruct(temp_t temperature){
      /* Variables */
       struct simParam_s* param_ps;
-      int i=0;
+      //int i=0;
    
       /* Allocation m�moire*/
       param_ps = malloc(sizeof(struct simParam_s));

@@ -16,8 +16,8 @@
  * @param nT 
  * @return float 
  */
-float TOR(float consigne,float* tabT, int nT){
-	if(tabT[nT-1] > consigne){
+float TOR(float consigne,float temp){
+	if(temp > consigne){
 		return 0;
 	}else{
 		return 50;
@@ -49,7 +49,7 @@ float PID(float consigne, float now_error, float prev_error, float* sum_error){
 		*sum_error += (DT * now_error) - (((now_error - prev_error) * DT) / 2);  
 
 	}else{ // Pour une erreur décroissante par rapport à sa précedente
-		// Afin de determiner l'aire de l'érreur, nous faisons l'aire du rectangle + le triangle de la différence des erreurs
+		// Afin de determiner l'aire de l'erreur, nous faisons l'aire du rectangle + le triangle de la différence des erreurs
 		*sum_error += (DT * now_error) + (((prev_error - now_error) * DT) / 2);
 	}
 	float I = KI * *sum_error;
@@ -88,7 +88,7 @@ float regulationTest(int regul,float consigne,float* tabT, int nT){
 	float cmd = 0; // <---
 	
 	if(regul == 1){
-		cmd = TOR(consigne, tabT, nT);
+		cmd = TOR(consigne, tabT[nT-1]);
 	}
 
 	if(regul == 2){

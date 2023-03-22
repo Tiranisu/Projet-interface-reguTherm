@@ -5,6 +5,7 @@
 #include "../Inc/visualisationC.h"
 #include "../Inc/regulation.h"
 #include <math.h>
+
 #define DISPLAY_DEBUG
 
 float testConsigne(){
@@ -89,6 +90,11 @@ float testConsigne(){
 		fclose(pf);
 		
 		// Create lock file (uniquement si il n'existe pas)
+		if( access( ".verrouConsigne", F_OK )!=-1)
+		{
+			perror("in testu_consigne.c, file .verrouConsigne not beahiving correctly");
+			return score;
+		}
 		pf = fopen(".verrouConsigne","w");
 		if(pf==NULL)
 		{
@@ -321,7 +327,6 @@ float testVisualisationC(){
 	float interieure[2]={17.0,18.0};
 	char temoin_chauffe[8];
 
-	//float puissance_read;
 	float exterieure_read;
 	float interieure_read;
 	char temoin_chauffe_read[8];
@@ -489,7 +494,6 @@ float testVisualisationC(){
 float testRegulationTOR(){
 	float score = 0.0;
 	int nPassedTest=0;
-	//float consigne = 19.0;
 	float tInt0 = 19.5;
 	float deltaT = -0.5;
 	int nT = 3;
@@ -625,7 +629,7 @@ float testRegulationPID(){
 	
 	for(i=0;i<nTTb;i++){
 		cmd = regulationTest(2,20.5,tabTT,i+1);
-		if(cmd!=attendu[i])
+		if(fabs(cmd-attendu[i])>0.01)
 		{
 			faux_comparaison_attendu_a=1;
 		}
