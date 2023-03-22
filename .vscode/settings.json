@@ -4,6 +4,12 @@
         "regulation.h": "c",
         "visualisationc.h": "c",
         "visualisationt.h": "c",
-        "math.h": "c"
-    }
+        "math.h": "c",
+        "releve.h": "c",
+        "usb.h": "c",
+        "define.h": "c",
+        "ftd2xx.h": "c",
+        "wintypes.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }
