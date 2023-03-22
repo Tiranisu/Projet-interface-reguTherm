@@ -1,4 +1,4 @@
-#include "usb.h"
+#include "../Inc/usb.h"
 
 FT_STATUS ouvertLien(FT_HANDLE *carte){
     FT_STATUS status;
