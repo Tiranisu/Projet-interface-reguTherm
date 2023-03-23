@@ -17,6 +17,10 @@ consigne.o
 autotests.o
 Inc/define.h.gch
 Inc/simulateur.h.gch
-
 releve.o
 commande.o
+data.txt
+trace.txt
+Inc/define.h.gch
+Inc/simulateur.h.gch
+Interface/consigne.txt

@@ -5,8 +5,13 @@
 #define KP 1.1
 #define KI 0.2
 #define KD 0.15
-#define DT 10 // Dans notre cas, nous avons un temps de 10s entre les valeurs
 
+#ifdef SIMULATEUR_T
+	#define DT 100 // Dans notre cas, nous avons un temps de 10s entre les valeurs
+#endif
+#ifndef SIMULATEUR_T
+	#define DT 10 
+#endif
 
 /**
  * @brief 
