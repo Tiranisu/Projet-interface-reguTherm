@@ -67,7 +67,7 @@ void msleep(int ms)
          temperature.interieure = (param_ps->tempExt_f + param_ps->rgf*PUISS_MAX * ((float)puissance / 100.0) + ((float)param_ps->tempInt_f*param_ps->kr))/(param_ps->kr+1.0);
       }
    	/* Ecriture des donnees dans le fichier trace.txt */
-      printf("Simulateur : P=%g%%, Temp ext.=%g deg, Temp int.=%g deg\n",puissance,param_ps->tempExt_f,param_ps->tempInt_f);
+      //printf("Simulateur : P=%g%%, Temp ext.=%g deg, Temp int.=%g deg\n",puissance,param_ps->tempExt_f,param_ps->tempInt_f);
       msleep(DELTA_T_SIM_MS);//la simulation dure 4ms et repr�sente en r�alit� 10s
       param_ps->compteur_i++;
       fprintf(param_ps->trace_pf,"%f \t %f \t %f \t %f\n",param_ps->compteur_i*DELTA_T,puissance,param_ps->tempExt_f,param_ps->tempInt_f);

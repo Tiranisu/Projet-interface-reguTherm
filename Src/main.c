@@ -32,6 +32,8 @@ int main(){
             commande(carte, 60);
         }
     }*/
+
+    
     /**
      * @brief 
      * 
@@ -54,14 +56,12 @@ int main(){
             break;
         
         case 2:
-            sum_error = 0;
             puissance = PID(consi, (consi - temperature.interieure), prev_error, &sum_error);
         break;
         default:
             break;
         }
-        printf("Text : %.2f, Tint : %.2f, Puis : %.2f , consigne : %.2f, \n",temperature.exterieure, temperature.interieure, puissance, consi);
-        printf("1");
+        printf("Text : %.2f, Tint : %.2f, Puis : %.2f , consigne : %.2f, erreur : %f\n",temperature.exterieure, temperature.interieure, puissance, consi, (consi - temperature.interieure));
         temperature = simCalc(puissance,monSimulateur_ps); // simulation de l'environnement
         visualisationT(temperature);
         visualisationC(puissance);

@@ -24,3 +24,5 @@ trace.txt
 Inc/define.h.gch
 Inc/simulateur.h.gch
 Interface/consigne.txt
+*.gch
+Inc/simulateur.h.gch
