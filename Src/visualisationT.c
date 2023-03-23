@@ -4,7 +4,7 @@ void visualisationT(temp_t myTemp)
 {
     if(access(".verrouData", F_OK) != 0){
 
-        char temoinChauffe[5];
+        char temoinChauffe[8];
 
         FILE* data = fopen("data.txt", "r");
 
@@ -16,6 +16,13 @@ void visualisationT(temp_t myTemp)
         fscanf(data, "%s\n", temoinChauffe);
         fclose(data);
 
+        FILE* verrouData = fopen(".verrouData", "w");
+        fclose(verrouData);
+        if(!verrouData){
+            perror("Un problème est survenu pendant la création/ouverture du fichier.");
+            return;
+        }
+
         data = fopen("data.txt", "w");
 
         if(!data){
@@ -23,17 +30,9 @@ void visualisationT(temp_t myTemp)
             return;
         }
 
-        FILE* verrouData = fopen(".verrouData", "w");
-
-        if(!verrouData){
-            perror("Un problème est survenu pendant la création/ouverture du fichier.");
-            return;
-        }
-
-        fprintf(data, "%s\n", temoinChauffe);
-        fprintf(data,"%.2f\n%.2f",myTemp.interieure,myTemp.exterieure);
+        fprintf(data, "%s\n%.2f\n%.2f", temoinChauffe, myTemp.interieure, myTemp.exterieure);
         fclose(data);
-        fclose(verrouData);
+        
 
         remove(".verrouData");
     }

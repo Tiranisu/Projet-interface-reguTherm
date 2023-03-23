@@ -8,7 +8,7 @@ void visualisationC(float puissance_f)
 {
    if(access(".verrouData", F_OK) != 0){
       
-      char temp[5];
+      char temp[8];
       float temp_int = 0, temp_ext = 0; 
 
       FILE* data = fopen("data.txt", "r");
@@ -22,6 +22,13 @@ void visualisationC(float puissance_f)
       fscanf(data, "%f\n", &temp_int);
       fscanf(data, "%f", &temp_ext);
       fclose(data);
+
+      FILE* verrouData = fopen(".verrouData", "w");
+      fclose(verrouData);
+      if(!verrouData){
+         perror("Un problème est survenu pendant la création/ouverture du fichier.");
+         return;
+      }
 
       data = fopen("data.txt", "w");
 
@@ -38,6 +45,7 @@ void visualisationC(float puissance_f)
       fprintf(data, "%.2f\n%.2f", temp_int, temp_ext);
       fclose(data);
    
+      
       remove(".verrouData");
    }
 }
