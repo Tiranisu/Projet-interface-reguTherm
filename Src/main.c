@@ -60,7 +60,7 @@ int main(){
             break;
         
         case 2:
-            puissance = PID(consi, (consi - temperature->interieure), prev_error, &sum_error); // la régulation avec le PID
+            puissance = PID((consi - temperature->interieure), prev_error, &sum_error); // la régulation avec le PID
             break;
 
         default:
