@@ -1,38 +1,35 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "../Inc/regulation.h"
 
-#define KP 1.1
-#define KI 0.2
-#define KD 0.15
+#define KP 1.1 // Gain propotionnel
+#define KI 0.2 // Gain intégral
+#define KD 0.15 // Gain dérivé
 
-#ifdef SIMULATEUR_T
-	#define DT 100 // Dans notre cas, nous avons un temps de 10s entre les valeurs
+#ifdef SIMULATEUR_T // Si le fichier simulateur.h est compilé avec ce fichier, DT vaut 100.
+	#define DT 100
 #endif
-#ifndef SIMULATEUR_T
+#ifndef SIMULATEUR_T // Si le fichier simulateur.h n'est compilé avec ce fichier, DT vaut 10.
 	#define DT 10 
 #endif
 
 
 /**
- * @brief 
+ * @brief Pour un régulateur du type tout ou rien
  * 
- * @param consigne 
- * @param tabT 
- * @param nT 
- * @return float 
+ * @param consigne Température de consigne
+ * @param temp Température actuelle
+ * @return float La commande de chauffage
  */
 float TOR(float consigne,float temp){
-	if(temp > consigne){
+	if(temp > consigne){ // si la température est plus faible que la consigne -> commande à 0
 		return 0;
-	}else{
+	}else{ // sinon mettre la commande à 50
 		return 50;
 	}
 }
 
 
 /**
- * @brief 
+ * @brief Permet de régler la puissance selon un régulateur PID
  * 
  * @param consigne 
  * @param now_error 
@@ -40,7 +37,7 @@ float TOR(float consigne,float temp){
  * @param sum_error 
  * @return float 
  */
-float PID(float consigne, float now_error, float prev_error, float* sum_error){
+float PID(float now_error, float prev_error, float* sum_error){
 	/*
 	 * Pour le terme Proportionnel
 	 */
@@ -71,9 +68,9 @@ float PID(float consigne, float now_error, float prev_error, float* sum_error){
 	 * La régulation PID se détermine est sommant les résultats obtenus précedement 
 	 */
 	float PID = P + I + D;
-	if(PID >= 100){
+	if(PID >= 100){ // La commande de chauffage ne peut pas excéder 100
 		return 100;
-	}if(PID <= 0){
+	}if(PID <= 0){ // La commande de chauffage ne peut pas être en dessous de 0
 		return 0;
 	}else{
 		return PID;
@@ -82,7 +79,7 @@ float PID(float consigne, float now_error, float prev_error, float* sum_error){
 
 
 /**
- * @brief 
+ * @brief Fonction utilisée pour les tests automatics 
  * 
  * @param regul Si 1 la regulation est en TOR, si 2 la régulation est en PID
  * @param consigne Température de consigne
@@ -103,7 +100,7 @@ float regulationTest(int regul,float consigne,float* tabT, int nT){
 			cmd = KP * (consigne - tabT[0]);
 		}else{
 			for(int i=1; i < nT; i++){
-				cmd = PID(consigne, (consigne - tabT[i]), (consigne - tabT[i-1]), &sum_error);
+				cmd = PID((consigne - tabT[i]), (consigne - tabT[i-1]), &sum_error);
 			}	
 		}
 	}
