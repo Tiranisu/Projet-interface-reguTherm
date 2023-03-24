@@ -1,5 +1,12 @@
 #include "../Inc/consigne.h"
 
+
+/**
+ * @brief 
+ * 
+ * @param thermostatPrec_f 
+ * @return float 
+ */
 float consigne(float thermostatPrec_f){
 
    float thermostat_f=0;

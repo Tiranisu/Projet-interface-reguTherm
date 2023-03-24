@@ -3,7 +3,6 @@
 #include "../Inc/simulateur.h"
 
 int main(){
-
 	temp_t temperature;
 	temperature.exterieure = 14.0;
 	temperature.interieure = 15.0;
