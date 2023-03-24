@@ -20,10 +20,8 @@
  * 
  */
 int main(){
-    FT_HANDLE* carte = malloc(sizeof(FT_HANDLE));
     //temp_t* temp = malloc(sizeof(temp_t));
-    FT_STATUS status;
-    status = ouvertLien(carte);
+    
     /*if(status != FT_OK){
         perror("Probleme pendant la création du lien avec la carte!");
     }else{
@@ -38,10 +36,16 @@ int main(){
      * @brief 
      * 
      */
-    temp_t temperature;
-    temperature.exterieure = 10.0;
-    temperature.interieure = 15.0;
-    struct simParam_s*  monSimulateur_ps = simConstruct(temperature); // creation du simulateur, puissance intialis�e � 0%
+    FT_HANDLE* carte = malloc(sizeof(FT_HANDLE));
+    FT_STATUS status;
+    temp_t* temperature = malloc(sizeof(temp_t));
+    status = ouvertLien(carte);
+    if(status != FT_OK){
+        perror("Probleme pendant la création du lien avec la carte!");
+    }
+    temperature->exterieure = 10.0;
+    temperature->interieure = 15.0;
+    struct simParam_s*  monSimulateur_ps = simConstruct(*temperature); // creation du simulateur, puissance intialis�e � 0%
     float consi = 0;
     float consigne_prev = 20;
     float puissance = 70;
@@ -52,21 +56,24 @@ int main(){
         switch (REGUL_TYPE)
         {
         case 1:
-            puissance = TOR(consi, temperature.interieure);
+            puissance = TOR(consi, temperature->interieure);
             break;
         
         case 2:
-            puissance = PID(consi, (consi - temperature.interieure), prev_error, &sum_error);
+            puissance = PID(consi, (consi - temperature->interieure), prev_error, &sum_error);
         break;
         default:
             break;
         }
-        printf("Text : %.2f, Tint : %.2f, Puis : %.2f , consigne : %.2f, erreur : %f\n",temperature.exterieure, temperature.interieure, puissance, consi, (consi - temperature.interieure));
-        temperature = simCalc(puissance,monSimulateur_ps); // simulation de l'environnement
-        visualisationT(temperature);
+        printf("Text : %.2f, Tint : %.2f, Puis : %.2f , consigne : %.2f, erreur : %f\n",temperature->exterieure, temperature->interieure, puissance, consi, (consi - temperature->interieure));
+        /*(*temperature) = simCalc(puissance,monSimulateur_ps); // simulation de l'environnement*/
+        releve(carte, temperature);
+        visualisationT(*temperature);
         visualisationC(puissance);
+        commande(carte, puissance);
         consigne_prev = consi;
-        prev_error = (consi - temperature.interieure);
+        prev_error = (consi - temperature->interieure);
+        msleep(40);
     }
     simDestruct(monSimulateur_ps); // destruction de simulateur
     return 0;

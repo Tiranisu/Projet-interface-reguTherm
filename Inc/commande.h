@@ -3,6 +3,6 @@
 
 #include "usb.h"
 
-void commande(FT_HANDLE *carte, int puissance);
+void commande(FT_HANDLE *carte, float puissance);
 
 #endif

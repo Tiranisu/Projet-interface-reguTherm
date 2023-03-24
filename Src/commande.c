@@ -1,6 +1,6 @@
 #include "../Inc/commande.h"
 
-void commande(FT_HANDLE *carte, int puissance){
+void commande(FT_HANDLE *carte, float puissance){
     FT_STATUS status;
 
     char data[1];
@@ -10,9 +10,9 @@ void commande(FT_HANDLE *carte, int puissance){
     data[0] = 0;
 
     if(puissance != 0){
-        data[0] |= 1<<8;
+        data[0] |= 1<<7;
     }else{
-        data[0] &= ~(1<<8);
+        data[0] &= ~(1<<7);
     }
 
     data[0] |= (PUIS & 0x7F);
