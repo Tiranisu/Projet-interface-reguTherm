@@ -26,3 +26,4 @@ Inc/simulateur.h.gch
 Interface/consigne.txt
 *.gch
 Inc/simulateur.h.gch
+test_sim.o
