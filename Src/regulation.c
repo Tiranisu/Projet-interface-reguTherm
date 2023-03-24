@@ -29,13 +29,12 @@ float TOR(float consigne,float temp){
 
 
 /**
- * @brief Permet de régler la puissance selon un régulateur PID
+ * @brief Pou une régulation de type PID
  * 
- * @param consigne 
- * @param now_error 
- * @param prev_error 
- * @param sum_error 
- * @return float 
+ * @param now_error erreur actuel
+ * @param prev_error erreur précédente
+ * @param sum_error somme des erreurs pour le calculer de l'intégrale
+ * @return float renvoie de la commande de température
  */
 float PID(float now_error, float prev_error, float* sum_error){
 	/*
