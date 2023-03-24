@@ -24,7 +24,7 @@ void visualisationT(temp_t myTemp)
         }
 
         fscanf(data, "%s\n", temoinChauffe); // récuperer l'état du témoin de chauffe dans le fichier data.txt
-        fclose(data);
+        fclose(data); // fermer le fichier data.txt
 
         data = fopen("data.txt", "w"); // Recrée le fichier data.txt
         if(!data){ // s'il n'arrive pas à créer data.txt, alors retourner une erreur
@@ -33,7 +33,7 @@ void visualisationT(temp_t myTemp)
         }
 
         fprintf(data, "%s\n%.2f\n%.2f", temoinChauffe, myTemp.interieure, myTemp.exterieure); // Insertion des données dans le data.txt
-        fclose(data);
+        fclose(data); // fermer le fichier data.txt
         
 
         remove(".verrouData"); // Supprime le verrou pour rendre l'accès à data.txt accessible 
