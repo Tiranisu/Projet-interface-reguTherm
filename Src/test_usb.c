@@ -13,17 +13,12 @@
 #define REGUL_TYPE 2 // TOR : 1 | PID : 2
 
 
-
 /**
- * @brief 
+ * @brief Pour la siulation lorsque la carte STM32 est connectée
  * 
  * 
  */
 int main(){
-    /**
-     * @brief Ci-dessous,  
-     * 
-     */
     FT_HANDLE* carte = malloc(sizeof(FT_HANDLE));
     FT_STATUS status;
     temp_t* temperature = malloc(sizeof(temp_t));
