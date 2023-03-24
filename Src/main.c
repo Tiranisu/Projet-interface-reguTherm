@@ -35,7 +35,7 @@ int main(){
 
     
     /**
-     * @brief 
+     * @brief Ci-dessous,  
      * 
      */
     temp_t temperature;
@@ -49,23 +49,23 @@ int main(){
     float sum_error = 0;
     while(1){
         consi = consigne(consigne_prev);
-        switch (REGUL_TYPE)
+        switch (REGUL_TYPE) // le choix du type du régulateur ce fait plus haut dans les #define
         {
         case 1:
-            puissance = TOR(consi, temperature.interieure);
+            puissance = TOR(consi, temperature.interieure); // la régulation du type tout ou rien
             break;
         
         case 2:
-            puissance = PID(consi, (consi - temperature.interieure), prev_error, &sum_error);
+            puissance = PID(consi, (consi - temperature.interieure), prev_error, &sum_error); // la régulation avec le PID
         break;
         default:
             break;
         }
         printf("Text : %.2f, Tint : %.2f, Puis : %.2f , consigne : %.2f, erreur : %f\n",temperature.exterieure, temperature.interieure, puissance, consi, (consi - temperature.interieure));
         temperature = simCalc(puissance,monSimulateur_ps); // simulation de l'environnement
-        visualisationT(temperature);
-        visualisationC(puissance);
-        consigne_prev = consi;
+        visualisationT(temperature); // envoie des températures pour l'affichage python
+        visualisationC(puissance); // envoie de l'état de chauffe pour l'affichage python
+        consigne_prev = consi; 
         prev_error = (consi - temperature.interieure);
     }
     simDestruct(monSimulateur_ps); // destruction de simulateur
