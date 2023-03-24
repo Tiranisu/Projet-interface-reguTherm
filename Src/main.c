@@ -20,18 +20,6 @@
  * 
  */
 int main(){
-    //temp_t* temp = malloc(sizeof(temp_t));
-    
-    /*if(status != FT_OK){
-        perror("Probleme pendant la création du lien avec la carte!");
-    }else{
-        while(1){
-            //releve(carte, temp);
-            commande(carte, 60);
-        }
-    }*/
-
-    
     /**
      * @brief Ci-dessous,  
      * 
