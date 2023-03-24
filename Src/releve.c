@@ -16,6 +16,7 @@ void releve(FT_HANDLE *carte, temp_t *temp){
         status = FT_Read(*carte, result, RxBytes, &BytesReceived);
         if(status != FT_OK){
             perror("Probleme lors de la lecture de donnees 1!");
+            return;
         }
         
         int ByteRead = 0;
