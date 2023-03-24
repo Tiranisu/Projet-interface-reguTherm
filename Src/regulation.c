@@ -72,14 +72,14 @@ float PID(float now_error, float prev_error, float* sum_error){
 		return 100;
 	}if(PID <= 0){ // La commande de chauffage ne peut pas être en dessous de 0
 		return 0;
-	}else{
+	}else{ // Sinon renvoyer la cmd calculée par le calcul du PID
 		return PID;
 	}
 }
 
 
 /**
- * @brief Fonction utilisée pour les tests automatics 
+ * @brief Fonction utilisée pour les tests automatiques 
  * 
  * @param regul Si 1 la regulation est en TOR, si 2 la régulation est en PID
  * @param consigne Température de consigne
@@ -88,7 +88,7 @@ float PID(float now_error, float prev_error, float* sum_error){
  * @return La commande de chauffage (chômage ;D) comprise entre 0 et 100 
  */
 float regulationTest(int regul,float consigne,float* tabT, int nT){
-	float cmd = 0; // <---
+	float cmd = 0;
 	
 	if(regul == 1){
 		cmd = TOR(consigne, tabT[nT-1]);
