@@ -1,2 +1,3 @@
 # Projet-interface-reguTherm
-A 3rd year project
+Un projet de 3eme année en C
+Fait par Maël Grellier Neau & Maxence Laurent
