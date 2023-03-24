@@ -36,6 +36,6 @@ void visualisationT(temp_t myTemp)
         fclose(data); // fermer le fichier data.txt
         
 
-        remove(".verrouData"); // Supprime le verrou pour rendre l'accès à data.txt accessible 
+        remove(".verrouData"); // supprime le verrou pour rendre l'accès à data.txt accessible 
     }
 }
