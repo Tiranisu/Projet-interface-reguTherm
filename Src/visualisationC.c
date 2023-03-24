@@ -25,7 +25,7 @@ void visualisationC(float puissance_f)
       
 
       FILE* data = fopen("data.txt", "r"); // lecture des données dans data.txt
-      if(!data){ // s'il n'arrive pas à créer le fichier data, alors retourner une erreur
+      if(!data){ // s'il n'arrive pas à lire le fichier data, alors retourner une erreur
          perror("Un problème est survenu pendant la création/ouverture du fichier.");
          return;
       }

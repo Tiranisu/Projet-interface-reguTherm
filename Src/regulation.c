@@ -7,16 +7,9 @@
 	#define DT 10 
 #endif
 
-#ifdef AUTOTESTS_H // Si le fichier AUTOTEST_H est définie
-	#define KP 1.1 // Gain propotionnel
-	#define KI 0.2 // Gain intégral
-	#define KD 0.15 // Gain dérivé
-#endif
-#ifndef AUTOTESTS_H // Si le fichier AUTOTEST_H est définie
-	#define KP 1.1 // Gain propotionnel
-	#define KI 0.01 // Gain intégral
-	#define KD 0.15 // Gain dérivé
-#endif  
+#define KP 1.1 // Gain propotionnel
+#define KI 0.2 // Gain intégral
+#define KD 0.15 // Gain dérivé
 
 /**
  * @brief Pour un régulateur du type tout ou rien
