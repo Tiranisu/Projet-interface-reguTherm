@@ -10,11 +10,12 @@
 #define REGUL_TYPE 2 // TOR : 1 | PID : 2
 
 /**
- * @brief 
- * 
+ * @brief Relie les différentes fonction entre elles pour obtenir une régulation globale 
+ * et un lien avec l'interface python
  * 
  */
 int main(){
+    // initialisation des valeurs nécessaires
     temp_t temperature;
     temperature.exterieure = 10.0;
     temperature.interieure = 15.0;
@@ -24,8 +25,8 @@ int main(){
     float puissance = 70;
     float prev_error = 0;
     float sum_error = 0;
-    while(consi >=5){
-        consi = consigne(consigne_prev);
+    while(consi >=5){ // faire cycler la simulation tant que la consigne n'est pas en dessous de 5°C 
+        consi = consigne(consigne_prev); // récupérer la température de consigne donné par l'affichage python
         switch (REGUL_TYPE) // le choix du type du régulateur ce fait plus haut dans les #define
         {
         case 1:
