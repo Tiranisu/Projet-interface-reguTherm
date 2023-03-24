@@ -8,7 +8,7 @@ OUTPUT = execute.exe
 O_FILES = $(wildcard *.o) 
 
 
-# Affiche les options possible
+# Affiche les options possibles
 first:		
 	$(info Pour appliquer les autotests, entrer : make autotests)
 	$(info Pour appliquer le test de la simulation global, entrer : make simu)
@@ -18,7 +18,7 @@ first:
 
 # Pour compiler et lancer le programme des autotests
 autotests:
-	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/main_test.c -o $(OUTPUT) -Wall
+	gcc Src/consigne.c Src/autotests.c Src/regulation.c Src/visualisationC.c Src/visualisationT.c Src/test_autotests.c -o $(OUTPUT) -Wall
 	./execute.exe
 	make clean
 
